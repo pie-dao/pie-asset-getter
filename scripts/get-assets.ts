@@ -36,8 +36,10 @@ async function getAssetsAndAmounts(assetGetter: PieAssetGetter, pie: string, pie
   const [tokens, amounts] = await assetGetter.callStatic.getAssetsAndAmounts(pie);
 
   for(let i = 0; i < tokens.length; i++) {
-    console.log(tokens[i] + " " + ethers.BigNumber.from(amounts[i]) + "\n");
+    console.log(tokens[i] + " " + ethers.BigNumber.from(amounts[i]));
   }
+
+  console.log("\n");
 }
 
 async function main() {
