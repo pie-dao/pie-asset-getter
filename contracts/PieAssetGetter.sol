@@ -201,9 +201,7 @@ contract PieAssetGetter {
             amount = _amount;
         } else {
             ILendingLogic lendingLogic = getLendingLogicFromWrapped(_wrapped);
-            
-            // works for aave, sushi, ygov.. gotta check for compound
-            amount = (_amount * lendingLogic.exchangeRate(_wrapped)) / 10e18;
+            amount = (_amount * lendingLogic.exchangeRate(_wrapped)) / 1e18;
         }
     }
 
