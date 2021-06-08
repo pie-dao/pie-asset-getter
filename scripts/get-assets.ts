@@ -3,6 +3,7 @@
 //
 // When running the script with `hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
+import { parseEther } from "ethers/lib/utils";
 import { ethers } from "hardhat";
 import { IPieRegistry } from "../typechain/IPieRegistry";
 import { PieAssetGetter } from "../typechain/PieAssetGetter";
@@ -31,9 +32,9 @@ async function getRegitriesPresence(address: string, symbol: string) {
 }
 
 async function getAssetsAndAmounts(assetGetter: PieAssetGetter, pie: string, pieName: string) {
-  console.log("Fetching assets and amount for 1 " + pieName);
+  console.log("Fetching assets and amount for 1000000 " + pieName);
 
-  const [tokens, amounts] = await assetGetter.callStatic.getAssetsAndAmounts(pie);
+  const [tokens, amounts] = await assetGetter.callStatic.getAssetsAndAmountsForAmount(pie, parseEther("1000000"));
 
   for(let i = 0; i < tokens.length; i++) {
     console.log(tokens[i] + " " + ethers.BigNumber.from(amounts[i]));
